@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Testing jMenu</title>
+<link href="css/jMenu.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jMenu.js"></script>
+</head>
+<body>
+	<h1>Testing jMenu</h1>
+	<pre>
+		jMenu allow user to create context menu or normal menu.	
+	</pre>
+	<h2>This is a demo for regular menu</h2>
+	Move over the menu to see  sub menu
+	
+	<div id="menu_wrapper">		
+	</div>
+	
+	<script type="text/javascript">
+		$("#menu_wrapper").jMenu({
+			mode:"standard",
+			items:[
+			    {
+			    	"label":"menu item1",
+			    	"href":"#menu_item1"
+			    },
+			    {
+			    	"label":"menu item2",
+			    	"href":"#menu_item2"
+			    },
+			    {
+			    	"label":"menu item3",
+			    	"href":"#menu_item3"
+			    },
+			    {
+			    	"label":"menu item4",
+			    	"href":"#menu_item4"
+			    },
+			    {
+			    	"label":"menu item5",
+			    	"href":"#menu_item5",
+			    	subMenu:[
+	    	       		{
+	    	       			"label":"sub51",
+	    	       			"href":"#sub51"
+	    	       		},
+	    	       		{
+	    	       			"label":"sub52",
+	    	       			"href":"#sub52"
+	    	       		},
+	    	       		{
+	    	       			"label":"sub53",
+	    	       			"href":"#sub53"
+	    	       		}
+    	         	]
+			    }
+			]
+		})
+	</script>
+</body>
+</html>

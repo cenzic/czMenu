@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Testing jMenu</title>
+<link href="css/jMenu.css" rel="stylesheet" type="text/css"/>
+<script src="js/jquery-1.9.1.js"></script>
+<script src="js/jMenu.js"></script>
+<style>
+	#context_menu{
+		width: 600px;
+		height: 200px;
+		border: black 1px solid;
+		padding: 20px;
+		text-align: center;
+	}
+</style>
+</head>
+<body>
+	<h1>Testing jMenu</h1>
+	<pre>
+	jMenu allow user to create context menu or normal menu.	
+	</pre>
+	
+    <div id="context_menu">
+        <h2>Context menu</h2>
+        click anywhere on this block to display sample context menu
+    </div>
+    
+    <table id="context_menu_table">
+        <tr>
+            <td>testing something</td>
+            <td><a>testing something</a></td>
+            <td><span>testing something</span></td>
+            <td><div class="jMenuIcon"></div></td>
+        </tr>
+        <tr>
+            <td><input type="checkbox"/></td>
+            <td><a href="#">testing something</a>testing something</td>
+            <td>testing something<span>testing something</span></td>
+            <td><div class="jMenuIcon"></div></td>
+        </tr>
+        <tr>
+            <td><input type="radio"/></td>
+            <td><select>
+                    <option>a</option>
+                    <option>b</option>
+                    <option>c</option>
+                </select></td>
+            <td><input type="text"/></td>
+            <td><div class="jMenuIcon"></div></td>
+        </tr>
+    </table>
+    <pre>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    </pre>
+	
+    <script type="text/javascript">
+		var menus = [];
+		var menu1 = {
+			label : "Test Menu",//text displayed in the menu
+			tooltip : "print a message to console output",//title of the element        		
+			handlers : {
+				"click":function(){
+					console.log("Test context Menu");
+				}
+			},//list of all handler for each list items. "eventType":handler
+			href : "",//if it a hyper link
+			subMenu:[]
+		};
+		var menu2 = {
+			label:"Original item",
+			tooltip:"print the original item that trigger the menu",
+			handlers:{
+				"click":function(e,item){
+					console.log("Original item id: %s", item.get(0).id)
+				}
+			}
+		};
+		var subMenu31 = {
+			label: "sub item 1",
+			handlers:{
+				"click":function(){
+					console.log("sub item 1 clicked");
+				}
+			}
+		};
+		var subMenu32 = {
+			label: "sub item 2",
+			handlers:{
+				"click":function(event,item){
+					console.log("sub item 2 clicked with item menu: %s",item.get(0).id);
+				}
+			}
+		};
+		var menu3 = {
+			label: "Sub menu",
+			tooltip:"Sub menu item should be added",
+			handlers:{
+				"click":function(){
+					console.log("menu with sub items clicked");
+				}
+			},
+			subMenu:[subMenu31,subMenu32]
+		};
+		var menu4 = {
+		    label: "Link to page",
+		    tooltip: "menu create to link to a page",
+		    href: "#test_link",		    
+		};
+		var menu5 = {
+		    label: "Dynamic Link",
+		    tooltip: "menu create a dynamic link depend on element click on",
+		    href: function () { return "#test_link" + this.test; },
+		    beforeRender: function () {
+		        this.test = "something";
+		        return true;
+		    }
+		};
+		var menu6 = {
+		    label: "Will not be rendered Link",		    
+		    href: "google.com",
+		    beforeRender: function () {		        
+		        return false;
+		    }
+		};
+		menus = [menu1, menu2, menu3,menu1, menu2,menu1, menu2, menu4, menu5, menu6];
+		$("#context_menu_table tr").jMenu({
+			trigger:"rightClick",
+			items: menus
+		});
+		$("div.jMenuIcon").jMenu({
+			trigger: "mouseover",
+			items: menus
+		});
+	</script>
+</body>
+</html>
